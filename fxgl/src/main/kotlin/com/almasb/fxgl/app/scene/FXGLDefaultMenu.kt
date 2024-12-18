@@ -193,20 +193,20 @@ open class FXGLDefaultMenu(type: MenuType) : FXGLMenu(type) {
         firstLetter.strokeProperty().bind(titleColor)
         firstLetter.strokeWidth = 1.5
 
-        val restOfTheTittle = getUIFactoryService().newText(title.substring(1, title.length), 50.0)
-        restOfTheTittle.fill = null
-        restOfTheTittle.stroke = titleColor.value
-        restOfTheTittle.strokeWidth = 1.5
+        val restOfTheTitle = getUIFactoryService().newText(title.substring(1, title.length), 50.0)
+        restOfTheTitle.fill = null
+        restOfTheTitle.stroke = titleColor.value
+        restOfTheTitle.strokeWidth = 1.5
 
         var firstLetterWidth = firstLetter.layoutBounds.width
-        var restOfTheTittleWidth = restOfTheTittle.layoutBounds.width
+        var restOfTheTitleWidth = restOfTheTitle.layoutBounds.width
 
         firstLetter.layoutBoundsProperty().addListener { _, _, newBounds -> firstLetterWidth = newBounds.width}
-        restOfTheTittle.layoutBoundsProperty().addListener { _, _, newBounds -> restOfTheTittleWidth = newBounds.width}
+        restOfTheTitle.layoutBoundsProperty().addListener { _, _, newBounds -> restOfTheTitleWidth = newBounds.width}
 
-        val tittleWidth = firstLetterWidth + restOfTheTittleWidth
+        val titleWidth = firstLetterWidth + restOfTheTitleWidth
 
-        val border = Rectangle(tittleWidth + 30, 65.0, null)
+        val border = Rectangle(titleWidth + 30, 65.0, null)
         border.stroke = Color.WHITE
         border.strokeWidth = 4.0
         border.arcWidth = 25.0
@@ -230,11 +230,11 @@ open class FXGLDefaultMenu(type: MenuType) : FXGLMenu(type) {
         emitter.setSpawnPointFunction { Point2D.ZERO }
         emitter.setAccelerationFunction { Point2D(random(-1.0, 1.0), random(0.0, 0.0)) }
 
-        val box = HBox(firstLetter, restOfTheTittle)
+        val box = HBox(firstLetter, restOfTheTitle)
         box.alignment = Pos.CENTER
 
         val titleRoot = StackPane(border, box)
-        titleRoot.translateX = appWidth / 2.0 - (tittleWidth + 30) / 2
+        titleRoot.translateX = appWidth / 2.0 - (titleWidth + 30) / 2
         titleRoot.translateY = 50.0
 
         if (!FXGL.getSettings().isNative)
